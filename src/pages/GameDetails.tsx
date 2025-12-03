@@ -1,0 +1,17 @@
+import { useParams } from "react-router-dom";
+import { games } from "../data/games";
+
+export default function GameDetailPage() {
+    const { id } = useParams();
+    const game = games.find((g) => g.id === Number(id));
+
+    if (!game) return <h2>Game không tồn tại</h2>;
+
+    return (
+        <div className="detail-container">
+            <img src={game.image} alt={game.name} className="detail-image" />
+            <h2>{game.name}</h2>
+            <p>Giá: {game.price.toLocaleString()}đ</p>
+        </div>
+    );
+}
