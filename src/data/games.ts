@@ -11,7 +11,7 @@ export const games: Game[] = [
         id: 1,
         name: "Cyberpunk 2077",
         price: 890000,
-        image: "/images/cyberpunk.png",
+        image: "./assets/images/cyberpunk.png",
         platform: "PC",
     },
     {
