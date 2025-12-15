@@ -3,49 +3,56 @@ import {FaSearch, FaShoppingCart, FaUser} from "react-icons/fa";
 
 const NavBar = () => {
     return (
-        <nav className='bg-blue-500 shadow-md'>
-            <div className='container mx-auto px-4 md:px-16 lg:px-24 py-4 flex justify-between items-center'>
-                <div className='text-lg font-bold text-white'>
-                    <Link to="/" className="flex items-center justify-center">
+        <nav className='bg-bg shadow-md text-text'>
+            <div className='container mx-auto px-4 py-3 md:px-16 lg:px-24 space-x-16 flex justify-between items-center'>
+                <div className='text-lg font-bold'>
+                    <Link to="/" className="flex items-center justify-center hover:scale-110 duration-100">
                         <img src="/images/logo.png" alt="" className="w-24 h-auto"/>
-                        MULTIPLE-SHOP
                     </Link>
                 </div>
                 <div className='relative flex-1 mx-4'>
                     <form>
-                        <input type="text" placeholder="Search" className='w-full py-2' />
+                        <input type="text" placeholder="Tìm kiếm sản phẩm" className='w-full bg-panelLight py-2 rounded-md placeholder:pl-2' />
                         <button
                             type="submit"
-                            className="absolute right-0 top-0 h-full px-3 bg-blue-700 flex items-center justify-center"
+                            className="absolute right-0 top-0 h-full px-3 bg-bg flex items-center justify-center border border-border rounded-r-md hover:bg-primaryHover"
                         >
-                            <FaSearch className="w-5 h-5 text-white" />
+                            <FaSearch className="w-5 h-5 text-textMuted" />
                         </button>
                     </form>
                 </div>
-                <div className='flex items-center space-x-4 text-white'>
-                    <button className=''>
-                        <FaUser className='w-5 h-5' />
+                <div className='flex items-center space-x-4'>
+                    <button className='p-3 border border-border rounded-lg hover:bg-primaryHover'>
+                        <FaUser className='w-5 h-5 text-textMuted' />
                     </button>
-                    <button className=''>Login</button>
-                    <button className=''>Register</button>
-
-                    <Link to="/cart" className='flex flex-row border border-white px-2 py-2 rounded-md space-x-2'>
-                        <FaShoppingCart className='w-6 h-6 text-white'/>
-                        Giỏ hàng
-                        <p className='bg-white text-black text-center rounded-md'>0</p>
-                    </Link>
+                    <div>
+                        <button className=''>Đăng nhập</button>
+                        /
+                        <button className=''>Đăng kí</button>
+                    </div>
                 </div>
+                <Link to="/cart" className='flex flex-row border border-border px-2 py-2 rounded-md space-x-2 hover:bg-primaryHover'>
+                    <FaShoppingCart className='w-6 h-6 text-textMuted'/>
+                    &nbsp; Giỏ hàng
+                    <p className='bg-panelLight text-center rounded-md w-5'>0</p>
+                </Link>
             </div>
 
-            <div className='flex items-center justify-center space-x-10 text-sm text-white font-bold'>
-                <Link to="/">
-                    Home
+            <div className='flex items-center justify-center space-x-20 pb-5 text-base text-text font-bold'>
+                <Link to="/" className="hover:underline">
+                    Trang chủ
                 </Link>
-                <Link to={"/"}>
-                    Shop
+                <Link to="/" className="hover:underline">
+                    Sản phẩm
                 </Link>
-                <Link to={"/"}>
-                    About
+                <Link to="/" className="hover:underline">
+                    Sản phẩm mua nhiều
+                </Link>
+                <Link to="/" className="hover:underline">
+                    Sản phẩm khuyến mại
+                </Link>
+                <Link to="/" className="hover:underline">
+                    Hình thức thanh toán
                 </Link>
             </div>
         </nav>
