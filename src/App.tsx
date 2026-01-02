@@ -2,9 +2,9 @@ import React from 'react';
 import NavBar from "./components/NavBar";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HonePage";
-import GameDetailPage from "./pages/GameDetails";
+import ProductDetails from "./pages/ProductDetails";
 import Footer from "./components/Footer";
-import Games from "./pages/Games";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
           <NavBar />
           <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/games" element={<Games />} />
-              <Route path="/game/:id" element={<GameDetailPage />} />
+              <Route path="/games" element={<Products />} />
+              <Route path="/game/:id" element={<ProductDetails />} />
               {/*<Route path="/best-seller" element={<BestSeller />} />*/}
               {/*<Route path="/game-on-sale" element={<GameOnSale />} />*/}
               {/*<Route path="/cart" element={<Cart />} />*/}
