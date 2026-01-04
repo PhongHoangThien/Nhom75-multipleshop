@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Products from "./pages/Products";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
               <Route path="/game/:id" element={<ProductDetails />} />
               {/*<Route path="/best-seller" element={<BestSeller />} />*/}
               {/*<Route path="/game-on-sale" element={<GameOnSale />} />*/}
-              {/*<Route path="/cart" element={<Cart />} />*/}
+              <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               {/*<Route path="/user-profile" element={<UserProfile />} />*/}
