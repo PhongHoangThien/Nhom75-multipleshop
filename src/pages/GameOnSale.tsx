@@ -1,37 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { setGame } from "../redux/gameSlice";
-import { setGame } from "../redux/productSlice";
+import { setProduct } from "../redux/productSlice";
 import { MockData } from "../data/MockData";
-import GameCard from "../components/GameCard";
+import ProductCard from "../components/ProductCard";
 import { FaFire, FaFilter } from "react-icons/fa";
 
 const GameOnSale = () => {
     const dispatch = useDispatch();
-
-    const gameData = useSelector((state: RootState) => state.games);
-
-    const [filteredGames, setFilteredGames] = useState<any[]>([]);
+    const productData = useSelector((state: RootState) => state.products);
+    const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
     const [sortType, setSortType] = useState("default");
 
     useEffect(() => {
-        dispatch(setGame(MockData));
+        dispatch(setProduct(MockData));
     }, [dispatch]);
 
     useEffect(() => {
-        if (!gameData.games) return;
+        if (!productData.products) return;
 
-        let tempGames = [...gameData.games];
-
+        let tempProducts = [...productData.products];
         if (sortType === "asc") {
-            tempGames.sort((a, b) => a.price - b.price);
+            tempProducts.sort((a, b) => a.price - b.price);
         } else if (sortType === "desc") {
-            tempGames.sort((a, b) => b.price - a.price);
+            tempProducts.sort((a, b) => b.price - a.price);
         }
 
-        setFilteredGames(tempGames);
-    }, [gameData.games, sortType]);
+        setFilteredProducts(tempProducts);
+    }, [productData.products, sortType]);
 
     return (
         <div className="bg-panel min-h-screen py-8 px-4 md:px-16 lg:px-24 text-text">
@@ -61,14 +57,15 @@ const GameOnSale = () => {
                     </div>
                 </div>
 
-                {filteredGames.length > 0 ? (
+                {filteredProducts.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                        {filteredGames.map((game: any) => (
-                            <div key={game.id} className="relative group">
+                        {filteredProducts.map((product: any) => (
+                            <div key={product.id} className="relative group">
                                 <div className="absolute top-2 left-2 z-10 bg-danger text-white text-xs font-bold px-2 py-1 rounded shadow-md">
                                     -{Math.floor(Math.random() * (70 - 10 + 1) + 10)}%
                                 </div>
-                                <GameCard product={game} />
+                                {/* 6. Sử dụng ProductCard và truyền prop đúng tên */}
+                                <ProductCard product={product} />
                             </div>
                         ))}
                     </div>
