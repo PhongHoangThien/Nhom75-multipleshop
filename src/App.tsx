@@ -11,8 +11,8 @@ import Cart from "./pages/Cart";
 import ProductOnSale from "./pages/ProductOnSale";
 import ForgotPassword from "./pages/ForgotPassword";
 import UserProfile from "./pages/UserProfile";
+import BestSeller from "./pages/ProductBestSeller";
 import Checkout from "./pages/Checkout";
-
 function App() {
   return (
       <BrowserRouter basename={import.meta.env.BASE_URL}>
@@ -21,7 +21,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<Products />} />
               <Route path="/product/:id" element={<ProductDetails />} />
-              {/*<Route path="/best-seller" element={<BestSeller />} />*/}
+              <Route path="/best-seller" element={<BestSeller />} />
               <Route path="/product-on-sale" element={<ProductOnSale />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/login" element={<Login />} />
