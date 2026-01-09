@@ -101,14 +101,14 @@ const Checkout = ({setOrder}: any) => {
                                 {user.email}
                             </div>
 
-                            <div>
-                                <label className="block text-textMuted mb-1">
-                                    Số điện thoại
+                            <div className="flex items-center justify-between space-x-4">
+                                <label className="text-textMuted">
+                                    SĐT:
                                 </label>
                                 <input
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
-                                    className="input w-full"
+                                    className="w-full bg-panelLight py-2 px-3 rounded-md"
                                     placeholder="Nhập số điện thoại"
                                 />
                             </div>

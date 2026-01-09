@@ -20,10 +20,15 @@ const NavBar = () => {
         navigate("/login");
     };
 
-    const handleSearch = (e: any) => {
-        e.preventDefault()
-        dispatch(setSearchTerm(search));
-        navigate("/filter-product");
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!search.trim()) {
+            navigate("/products");
+            return;
+        }
+
+        navigate(`/products?search=${encodeURIComponent(search)}`);
     }
 
     return (
@@ -39,7 +44,7 @@ const NavBar = () => {
                 <div className='relative flex-1 mx-4'>
                     <form onSubmit={handleSearch}>
                         <input type="text" placeholder="Tìm kiếm sản phẩm"
-                               className='w-full bg-panelLight py-2 rounded-md placeholder:pl-2'
+                               className='w-full bg-panelLight py-2 px-3 rounded-md'
                                onChange={(e) => setSearch(e.target.value)}
                         />
                         <button

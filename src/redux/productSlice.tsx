@@ -13,16 +13,12 @@ export interface Product {
 }
 interface ProductState {
     products: Product[];
-    searchTerm: String;
-    filteredProducts: Product[];
     isLoading: boolean;
     error: string | null;
 }
 
 const initialState: ProductState = {
     products: [],
-    searchTerm: '',
-    filteredProducts: [],
     isLoading: false,
     error: null,
 };
@@ -47,12 +43,6 @@ const productSlice = createSlice({
         setProduct(state, action: PayloadAction<Product[]>) {
             state.products = action.payload;
         },
-        setSearchTerm(state, action: PayloadAction<string>) {
-            state.searchTerm = action.payload;
-            state.filteredProducts = state.products.filter(
-                product => product.name.toLowerCase().includes(state.searchTerm.toLowerCase())
-            )
-        }
     }
 });
 
@@ -61,7 +51,6 @@ export const {
     fetchProductsSuccess,
     fetchProductsFailure,
     setProduct,
-    setSearchTerm,
 } = productSlice.actions;
 
 export default productSlice.reducer;
