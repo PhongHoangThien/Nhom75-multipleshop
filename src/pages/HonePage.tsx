@@ -33,18 +33,26 @@ const HomePage = () => {
                     </div>
                     <ul className="bg-panelLight">
                         {ProductCategory.map((category, index) => (
+                            // <li
+                            //     key={index}
+                            //     className="flex items-center py-2 px-4 text-sm font-medium hover:bg-panel"
+                            // >
+                            //     {category}
+                            // </li>
                             <li
                                 key={index}
-                                className="flex items-center py-2 px-4 text-sm font-medium hover:bg-panel"
+                                onClick={() => navigate(`/products?category=${encodeURIComponent(category)}`)}
+                                className="flex items-center py-2 px-4 text-sm font-medium hover:bg-panel cursor-pointer"
                             >
                                 {category}
                             </li>
+
                         ))}
                     </ul>
                 </div>
 
                 <div className="w-full md:w-8/12 h-96 relative">
-                    <BannerSlider />
+                    <BannerSlider/>
                 </div>
             </div>
 
