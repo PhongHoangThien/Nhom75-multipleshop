@@ -59,7 +59,6 @@ const HomePage = () => {
             <InfoSection />
             <CategorySection />
 
-            {/* ===== Game thịnh hành ===== */}
             <div className="container mx-auto py-12">
                 <h2 className="text-title font-bold mb-6 text-center">
                     Game thịnh hành
