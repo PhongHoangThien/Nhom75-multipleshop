@@ -7,7 +7,7 @@
 }
 
 * {
-    @apply transition-colors duration-300 ease-in-out;
+    @apply transition-all duration-300 ease-in-out;
 }
 
 .theme {
@@ -40,6 +40,10 @@
 
 .borderColor {
     @apply border-border_light dark:border-border;
+}
+
+.hover-theme {
+    @apply bg-primaryHover_light text-primaryHover_light dark:bg-primaryHover dark:text-primaryHover;
 }
 
 .card-hover {
