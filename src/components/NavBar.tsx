@@ -1,16 +1,5 @@
 import {Link, NavLink, useNavigate} from "react-router-dom";
-import {
-    FaMoon,
-    FaSearch,
-    FaShoppingCart,
-    FaSun,
-    FaUser,
-    FaSignOutAlt,
-    FaHistory,
-    FaHeart,
-    FaCog,
-    FaList
-} from "react-icons/fa";
+import {FaMoon, FaSearch, FaShoppingCart, FaSun, FaUser, FaSignOutAlt, FaHistory, FaHeart, FaCog, FaList} from "react-icons/fa";
 import {useTheme} from "../hook/useTheme";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../redux/store";
