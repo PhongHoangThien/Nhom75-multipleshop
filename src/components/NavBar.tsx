@@ -1,4 +1,4 @@
-import {Link, useNavigate} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import {
     FaMoon,
     FaSearch,
@@ -44,11 +44,6 @@ const NavBar = () => {
     }
 
     const [open, setOpen] = useState(false);
-
-    const navItemClass = ({ isActive }: { isActive: boolean }) =>
-        `relative pb-1 text-xl font-black uppercase transition-all duration-300 no-underline hover:text-primary ${
-            isActive ? "text-primary" : "text-text"
-        } group`;
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -167,25 +162,32 @@ const NavBar = () => {
                     &nbsp; <span className="hidden lg:block">Giỏ hàng</span>
                     <p className='panel-theme text-center rounded-md w-5'>{products.length}</p>
                 </Link>
-                <div>
-                    <button
-                        onClick={toggleTheme}
-                            className="flex items-center justify-center w-10 h-10 rounded-full panel-theme card-hover"
+
+                {/*toggle theme*/}
+                <div
+                    onClick={toggleTheme}
+                    className="border-theme relative w-14 h-8 cursor-pointer rounded-full panel-theme flex items-center"
+                >
+                    <div
+                        className={`theme absolute top-1 left-1 w-6 h-6 rounded-full flex items-center justify-center 
+                        ${theme === "dark" ? "translate-x-6" : ""}`}
                     >
-                        {theme === "dark" ? <FaSun/> : <FaMoon/>}
-                    </button>
+                        {theme === "dark" ? (
+                            <FaMoon />
+                        ) : (
+                            <FaSun />
+                        )}
+                    </div>
                 </div>
             </div>
 
-            <div className='flex items-center justify-center space-x-20 py-2 font-bold'>
-                <Link to="/" className="hover:underline">Trang chủ</Link>
-
+            <div className='flex items-center justify-center space-x-20 py-2 text-lg font-bold'>
                 <div className="relative" ref={dropdownRef}>
                     <div
-                        className="flex items-center gap-2 cursor-pointer select-none rounded-md"
+                        className="flex items-center gap-2 cursor-pointer select-none rounded-md hover:text-primary"
                         onClick={() => setOpen(!open)}
                     >
-                        <span className="font-bold">Thể loại game</span>
+                        <span>Thể loại game</span>
                         <FaList />
                     </div>
 
@@ -206,9 +208,32 @@ const NavBar = () => {
                         </ul>
                     )}
                 </div>
-                <Link to="/products" className="hover:underline">Tìm game</Link>
-                <Link to="/product-on-sale" className="hover:underline">Game đang giảm giá</Link>
-                <Link to="/payment-method" className="hover:underline">Hình thức thanh toán</Link>
+
+                <div className="flex space-x-20">
+                    {[
+                        { path: "/", label: "Trang chủ" },
+                        { path: "/products", label: "Tìm game" },
+                        { path: "/product-on-sale", label: "Game đang giảm giá" },
+                        { path: "/payment-method", label: "Thanh toán" },
+                    ].map(({ path, label }) => (
+                        <NavLink
+                            key={path}
+                            to={path}
+                            className={({ isActive }) => `relative pb-1 font-bold 
+                            ${isActive ? "text-primary" : "text-text hover:text-primary"} group`}
+                        >
+                            {({ isActive }) => (
+                                <>
+                                    {label}
+                                    <span
+                                        className={`absolute bottom-0 left-0 h-1 bg-primary ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
+                                    />
+                                </>
+                            )}
+                        </NavLink>
+                    ))}
+                </div>
+
             </div>
         </nav>
     )
